@@ -32,8 +32,4 @@ class Specie extends Prodotti
         $this->icon = $_icon;
     }
 
-    /* public $cane;
-    public $gatto;
-    public $uccelli;
-    public $pesci; */
 }

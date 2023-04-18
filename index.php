@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/Models/prodotti.php';
 require_once __DIR__ . '/Models/specie.php';
+require_once __DIR__ . '/Models/cibo.php';
 
 
 $specie_cane = new Specie('Cane', '<i class="fa-solid fa-dog"></i>');
@@ -12,19 +13,16 @@ $specie_pesce = new Specie('Pesce', '<i class="fa-solid fa-fish"></i>');
  */
 $prodotti1 = new Prodotti(1, 'Collare', $specie_cane,  24.99, 'molto carino', '#');
 $prodotti2 = new Prodotti(2, 'Osso', $specie_cane, 14.99, 'molto buono',  '#');
+$prodotti3 = new Cibo(3, 'Crocchette', $specie_gatto, 34.99, 'molto croccanti ',  '#');
+$prodotti3->set_ingredienti('pollo, manzo, verdure');
 
-/* var_dump($prodotti1, $prodotti2);
- */
-$prodotti = [
+
+/*  var_dump($prodotti3);
+ */$prodotti = [
     $prodotti1,
-    $prodotti2
-]
-
-
-
-
-
-
+    $prodotti2,
+    $prodotti3,
+];
 
 
 ?>
@@ -57,12 +55,20 @@ $prodotti = [
             <?php foreach ($prodotti as $prodotti) : ?>
                 <div class="col-12 col-md-3">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $prodotti->get_name() ;?></h5>
-                            <p class="card-text"><?php echo $prodotti->get_description() ;?></p>
+<!--                         <img src="..." class="card-img-top" alt="...">
+ -->                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $prodotti->get_name(); ?></h5>
+                            <p class="card-text"><?php echo $prodotti->get_description(); ?></p>
+                            <p>prezzo: <?php echo $prodotti->get_prezzo(); ?>€</p>
+
+                            <?php if (method_exists($prodotti, 'get_ingredienti')) : ?>
+                                <p> ingredienti: <?php
+                                                /** @var cibo $prodotti */
+                                                echo $prodotti->get_ingredienti();
+                                                ?></p>
+                            <?php endif; ?>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>  
+                        </div>
                     </div>
                 </div>
 
