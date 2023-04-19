@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/prodotti.php';
+/* require_once __DIR__ .'/traits/name.php';
+ */
 
 class Specie extends Prodotti
 {
@@ -13,15 +15,15 @@ class Specie extends Prodotti
         $this->icon = $_icon;
     }
 
-    //name
+/*     //name
     public function get_name()
     {
         return $this->name;
     }
-    public function set_name($_name)
+    public function set_name($_name) 
     {
         $this->name = $_name;
-    }
+    } */
 //icon
     public function get_icon()
     {
@@ -31,5 +33,8 @@ class Specie extends Prodotti
     {
         $this->icon = $_icon;
     }
-
+    public function get_category_info()
+    {
+        return "{$this->icon} {$this->name}";
+    }
 }

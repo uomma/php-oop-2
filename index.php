@@ -13,15 +13,25 @@ $specie_pesce = new Specie('Pesce', '<i class="fa-solid fa-fish"></i>');
  */
 $prodotti1 = new Prodotti(1, 'Collare', $specie_cane,  24.99, 'molto carino', '#');
 $prodotti2 = new Prodotti(2, 'Osso', $specie_cane, 14.99, 'molto buono',  '#');
-$prodotti3 = new Cibo(3, 'Crocchette', $specie_gatto, 34.99, 'molto croccanti ',  '#');
 $prodotti3->set_ingredienti('pollo, manzo, verdure');
+try{
+    $prodotti3 = new Cibo(3, 'Crocchette', $specie_gatto, 34.99, 'molto croccanti ',  '#');
+
+}catch (Exception $error){
+    
+};
+$prodotti4 = new Cibo(4, 'Mangime per pesci', $specie_pesce, 8.99, 'molto nutrienti ',  '#');
+$prodotti4->set_ingredienti('pesce, cereali, alghe');
+
 
 
 /*  var_dump($prodotti3);
- */$prodotti = [
+ */
+$prodotti = [
     $prodotti1,
     $prodotti2,
     $prodotti3,
+    $prodotti4
 ];
 
 
@@ -54,20 +64,18 @@ $prodotti3->set_ingredienti('pollo, manzo, verdure');
 
             <?php foreach ($prodotti as $prodotti) : ?>
                 <div class="col-12 col-md-3">
-                    <div class="card">
-<!--                         <img src="..." class="card-img-top" alt="...">
- -->                        <div class="card-body">
+                    <div class="card h-100">
+                        <!--                         <img src="..." class="card-img-top" alt="...">
+ -->
+                        <div class="card-body">
                             <h5 class="card-title"><?php echo $prodotti->get_name(); ?></h5>
+                            <h6><?php echo $prodotti-> get_categoria()-> get_category_info()?></h6>
                             <p class="card-text"><?php echo $prodotti->get_description(); ?></p>
                             <p>prezzo: <?php echo $prodotti->get_prezzo(); ?>€</p>
-
                             <?php if (method_exists($prodotti, 'get_ingredienti')) : ?>
-                                <p> ingredienti: <?php
-                                                /** @var cibo $prodotti */
-                                                echo $prodotti->get_ingredienti();
-                                                ?></p>
+                                <p> ingredienti: <?php /** @var cibo $prodotti */ echo $prodotti->get_ingredienti();?></p>
                             <?php endif; ?>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary align-bottom m-1">Buy Now</a>
                         </div>
                     </div>
                 </div>
