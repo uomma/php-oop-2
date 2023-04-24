@@ -18,7 +18,7 @@ try{
     $prodotti3 = new Cibo(3, 'Crocchette', $specie_gatto, 34.99, 'molto croccanti ',  '#');
 
 }catch (Exception $error){
-    
+    echo $error->getMessage();
 };
 $prodotti4 = new Cibo(4, 'Mangime per pesci', $specie_pesce, 8.99, 'molto nutrienti ',  '#');
 $prodotti4->set_ingredienti('pesce, cereali, alghe');

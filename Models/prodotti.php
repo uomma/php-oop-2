@@ -1,12 +1,12 @@
 <?php
-require_once __DIR__ .'/../traits/name.php';
+require_once __DIR__ . '/../traits/name.php';
 /** @author marcello 
-*/
+ */
 class Prodotti
 {
 
     use Nome {
-    get_name as get_trait_name;
+        get_name as get_trait_name;
     }
 
     private $id;
@@ -15,7 +15,7 @@ class Prodotti
     private $prezzo;
     private $description;
     private $image;
-    
+
     /**
      * __construct
      *
@@ -46,13 +46,13 @@ class Prodotti
     {
         $this->id = $_id;
     }
- 
+
     //name
     public function get_name()
     {
         return $this->get_trait_name();
     }
-  /*   public function set_name($_name)
+    /*   public function set_name($_name)
     {
         $this->name = $_name;
     }   */
@@ -73,7 +73,10 @@ class Prodotti
     }
     public function set_prezzo($_prezzo)
     {
-        $this->prezzo = $_prezzo;
+        if ($_prezzo <= 0) {
+            throw new Exception('non puoi fare beneficenza');
+            $this->prezzo = $_prezzo;
+        }
     }
 
     //description
